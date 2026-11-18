@@ -1,4 +1,8 @@
-# Yaratıcı komutlar
+# Water Scene Prompts / Yaratıcı komutlar
+
+## Türkçe
+
+[Canlı aracı aç](https://omerbek.github.io/water-scene-prompts/).
 
 Aynı istasyon sahnesini üç özgün komutla yeniden yorumla.
 
@@ -6,9 +10,6 @@ Aynı istasyon sahnesini üç özgün komutla yeniden yorumla.
 
 `index.html` dosyasını bir tarayıcıda aç. Oynat düğmesini ve zaman çizelgesini kullanarak sekiz saniyelik sahneyi incele. HTML ve Canvas 2D ile çevrimdışı çalışır.
 
-## İlham kaynağı
-
-Bu bağımsız sahne sentetik su istasyonu örnekleri kullanır. [Kaynak proje](https://github.com/yihui-dev/awesome-opus5-5-videos).
 
 ## Sahne ayarları
 
@@ -19,3 +20,9 @@ Bu bağımsız sahne sentetik su istasyonu örnekleri kullanır. [Kaynak proje](
 Komut metinleri düzenlenebilir storyboard notlarıdır. Üç görsel yaklaşım önceden kodlanmıştır.
 
 Sekiz saniyelik zaman çizelgesinden bir kare seçip **PNG indir** ile 720 × 405 piksel dışa aktarabilirsin.
+
+## English
+
+Write storyboard prompts for three preset water animations.
+
+Open [the live tool](https://omerbek.github.io/water-scene-prompts/) or open `index.html` in a browser. Switch between Turkish and English in the page header. Use the timeline to select a frame and **Download PNG** to save it at 720 × 405 pixels.
