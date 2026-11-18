@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yaratıcı komutlar</title>
+<style>
+:root {color-scheme: dark; font: 16px system-ui; background: #101419; color: #ebf3f5;}
+body {margin: 0 auto; max-width: 68rem; padding: 2rem 1.25rem;}
+h1 {font-size: clamp(2.5rem, 9vw, 5rem); margin: 0; letter-spacing: -.05em;}
+canvas {display: block; width: 100%; height: auto; border: 1px solid #40535a;}
+.controls {display: flex; align-items: center; gap: .75rem; margin-top: .75rem;}
+input {flex: 1; min-width: 4rem;}
+button {font: inherit; color: inherit; border: 1px solid #40535a; background: #1c262c; border-radius: .25rem; padding: .55rem; text-align: left; cursor: pointer;}
+a {color: #9ef4dc;}
+</style>
+</head>
+<body>
+<header><h1>Yaratıcı komutlar</h1><p>Aynı istasyon sahnesini üç özgün komutla yeniden yorumla.</p></header>
+<main>
+<section>
+<canvas width="720" height="405" aria-label="Seçili hareket deneyinin önizlemesi"></canvas>
+<div class="controls"><button id="play" type="button">Oynat</button><input id="seek" type="range" min="0" max="8" step="0.01" value="0" aria-label="Zaman çizelgesi"><output id="time">0.00 sn</output></div>
+<p><a href="https://github.com/yihui-dev/awesome-opus5-5-videos">İlham kaynağı · GitHub</a></p>
+</section>
+</main>
+<script src="scene.js"></script>
+</body>
+</html>
