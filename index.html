@@ -13,14 +13,23 @@ canvas {display: block; width: 100%; height: auto; border: 1px solid #40535a;}
 input {flex: 1; min-width: 4rem;}
 button {font: inherit; color: inherit; border: 1px solid #40535a; background: #1c262c; border-radius: .25rem; padding: .55rem; text-align: left; cursor: pointer;}
 a {color: #9ef4dc;}
+fieldset {display:flex; flex-wrap:wrap; gap:.75rem 1rem; margin:0 0 1rem; border:1px solid #40535a;}
+fieldset label {display:flex; flex-direction:column; gap:.2rem; font-size:.85rem;}
+fieldset input {font:inherit; max-width:15rem; padding:.35rem;}
+.controls {flex-wrap:wrap;}
 </style>
 </head>
 <body>
 <header><h1>Yaratıcı komutlar</h1><p>Aynı istasyon sahnesini üç özgün komutla yeniden yorumla.</p></header>
 <main>
 <section>
+<fieldset id="settings"><legend>Sahne ayarları</legend>
+<label for="first">Uyarı komutu<input id="first" value="Suyu sarı bir uyarı çizgisiyle anlat." type="text" maxlength="50"></label>
+<label for="second">Dalga komutu<input id="second" value="Akışı camgöbeği bir dalgaya dönüştür." type="text" maxlength="50"></label>
+<label for="third">Nokta komutu<input id="third" value="Veriyi noktalardan oluşan bir haritaya işle." type="text" maxlength="50"></label>
+</fieldset>
 <canvas width="720" height="405" aria-label="Seçili hareket deneyinin önizlemesi"></canvas>
-<div class="controls"><button id="play" type="button">Oynat</button><input id="seek" type="range" min="0" max="8" step="0.01" value="0" aria-label="Zaman çizelgesi"><output id="time">0.00 sn</output></div>
+<div class="controls"><button id="play" type="button">Oynat</button><input id="seek" type="range" min="0" max="8" step="0.01" value="0" aria-label="Zaman çizelgesi"><output id="time">0.00 sn</output><button id="save" type="button">PNG indir</button></div>
 <p><a href="https://github.com/yihui-dev/awesome-opus5-5-videos">İlham kaynağı · GitHub</a></p>
 </section>
 </main>
