@@ -5,32 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yaratıcı komutlar</title>
 <style>
-:root {color-scheme: dark; font: 16px system-ui; background: #101419; color: #ebf3f5;}
-body {margin: 0 auto; max-width: 68rem; padding: 2rem 1.25rem;}
-h1 {font-size: clamp(2.5rem, 9vw, 5rem); margin: 0; letter-spacing: -.05em;}
-canvas {display: block; width: 100%; height: auto; border: 1px solid #40535a;}
-.controls {display: flex; align-items: center; gap: .75rem; margin-top: .75rem;}
-input {flex: 1; min-width: 4rem;}
-button {font: inherit; color: inherit; border: 1px solid #40535a; background: #1c262c; border-radius: .25rem; padding: .55rem; text-align: left; cursor: pointer;}
-a {color: #9ef4dc;}
-fieldset {display:flex; flex-wrap:wrap; gap:.75rem 1rem; margin:0 0 1rem; border:1px solid #40535a;}
-fieldset label {display:flex; flex-direction:column; gap:.2rem; font-size:.85rem;}
-fieldset input {font:inherit; max-width:15rem; padding:.35rem;}
-.controls {flex-wrap:wrap;}
+:root { color-scheme: dark; font: 16px system-ui,sans-serif; background: #091115; color: #f1f7f5; }
+* { box-sizing: border-box; }
+body { margin: 0 auto; max-width: 76rem; padding: clamp(1rem,4vw,4rem); }
+header { position: relative; padding-block: 4rem 2rem; border-bottom: 1px solid #2b4146; margin-bottom: 1.5rem; }
+h1 { margin: 0; font-size: clamp(2.5rem,7vw,5.5rem); line-height: 1; letter-spacing: -.055em; }
+header p { margin-bottom: 0; color: #b5c9c8; max-width: 46rem; }
+nav { position: absolute; inset: 0 0 auto auto; display: flex; gap: .35rem; }
+section { display: grid; grid-template-columns: minmax(0,1fr) minmax(14rem,18rem); gap: 1rem; align-items: start; }
+section > :not(fieldset) { grid-column: 1; }
+canvas { display: block; width: 100%; height: auto; border: 1px solid #385259; border-radius: .75rem; }
+fieldset { grid-column: 2; grid-row: 1 / span 3; display: grid; gap: .8rem; min-width: 0; padding: 1rem; border: 1px solid #385259; border-radius: .75rem; }
+legend { padding-inline: .35rem; color: #9ef4dc; }
+label { display: grid; gap: .4rem; color: #b5c9c8; }
+input, button { min-width: 0; padding: .55rem .65rem; border: 1px solid #385259; border-radius: .4rem; background: #142328; color: inherit; font: inherit; }
+button { cursor: pointer; }
+button:hover, button[aria-pressed=true] { border-color: #9ef4dc; }
+button[aria-pressed=true], #save { background: #9ef4dc; color: #091713; }
+:focus-visible { outline: 2px solid #ffcb7d; outline-offset: 3px; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+#seek { flex: 1; min-width: 6rem; accent-color: #9ef4dc; }
+#time { min-width: 4.75rem; font-variant-numeric: tabular-nums; color: #b5c9c8; }
+code { color: #9ef4dc; }
+@media (max-width: 740px) { section { display: flex; flex-direction: column; align-items: stretch; } }
 </style>
 </head>
 <body>
-<header><h1>Yaratıcı komutlar</h1><p>Aynı istasyon sahnesini üç özgün komutla yeniden yorumla.</p></header>
+<header><nav aria-label="Language"><button id="lang-tr" type="button" lang="tr" aria-pressed="true">Türkçe</button><button id="lang-en" type="button" lang="en" aria-pressed="false">English</button></nav><h1 data-i18n="title">Yaratıcı komutlar</h1><p data-i18n="description">Aynı istasyon sahnesini üç özgün komutla yeniden yorumla.</p></header>
 <main>
 <section>
-<fieldset id="settings"><legend>Sahne ayarları</legend>
-<label for="first">Uyarı komutu<input id="first" value="Suyu sarı bir uyarı çizgisiyle anlat." type="text" maxlength="50"></label>
-<label for="second">Dalga komutu<input id="second" value="Akışı camgöbeği bir dalgaya dönüştür." type="text" maxlength="50"></label>
-<label for="third">Nokta komutu<input id="third" value="Veriyi noktalardan oluşan bir haritaya işle." type="text" maxlength="50"></label>
+<fieldset id="settings"><legend data-i18n="settings">Sahne ayarları</legend>
+<label for="first"><span data-i18n="first">Uyarı komutu</span><input id="first" value="Suyu sarı bir uyarı çizgisiyle anlat." type="text" maxlength="50"></label>
+<label for="second"><span data-i18n="second">Dalga komutu</span><input id="second" value="Akışı camgöbeği bir dalgaya dönüştür." type="text" maxlength="50"></label>
+<label for="third"><span data-i18n="third">Nokta komutu</span><input id="third" value="Veriyi noktalardan oluşan bir haritaya işle." type="text" maxlength="50"></label>
 </fieldset>
-<canvas width="720" height="405" aria-label="Seçili hareket deneyinin önizlemesi"></canvas>
-<div class="controls"><button id="play" type="button">Oynat</button><input id="seek" type="range" min="0" max="8" step="0.01" value="0" aria-label="Zaman çizelgesi"><output id="time">0.00 sn</output><button id="save" type="button">PNG indir</button></div>
-<p><a href="https://github.com/yihui-dev/awesome-opus5-5-videos">İlham kaynağı · GitHub</a></p>
+<canvas width="720" height="405" data-i18n-label="preview" aria-label="Seçili hareket deneyinin önizlemesi"></canvas>
+<div class="controls"><button id="play" type="button">Oynat</button><input id="seek" type="range" min="0" max="8" step="0.01" value="0" data-i18n-label="timeline" aria-label="Zaman çizelgesi"><output id="time">0.00 sn</output><button id="save" data-i18n="save" type="button">PNG indir</button></div>
 </section>
 </main>
 <script src="scene.js"></script>
